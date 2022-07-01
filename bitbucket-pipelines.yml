@@ -1,0 +1,61 @@
+image: node:16
+
+definitions:
+  steps:
+    - step: &install
+        name: Install dependencies
+        caches:
+          - node
+        script:
+          - npm ci
+    - step: &build
+        name: Build project
+        caches:
+          - node
+        script:
+          - npm run build
+    - step: &lint
+        name: Code linting
+        caches:
+          - node
+        script:
+          - npm run lint
+    - step: &test
+        name: Unit tests
+        caches:
+          - node
+        script:
+          - npm run test
+    - step: &publish
+        name: Publish to npm
+        caches:
+          - node
+        script:
+          - npm run build
+          - pipe: atlassian/npm-publish:0.2.0
+            variables:
+              NPM_TOKEN: $NPM_TOKEN
+pipelines:
+  branches:
+    main:
+      - step: *install
+      - parallel:
+        - step: *lint
+        - step: *build
+    dev:
+      - step: *install
+      - parallel:
+        - step: *lint
+        - step: *build
+    'release/**':
+      - step: *install
+      - parallel:
+        - step: *lint
+        - step: *build
+      - step: *publish
+  pull-requests:
+    '**':
+      - step: *install
+      - parallel:
+        - step: *lint
+        - step: *build

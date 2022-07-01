@@ -1,0 +1,43 @@
+{
+  "name": "@motivapp/auth",
+  "version": "1.0.0",
+  "description": "An authentication library used on the web repos to allow code sharing between multiple repositories.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc && ./node_modules/.bin/babel src --extensions .ts --out-dir dist",
+    "lint": "eslint \"**/*.{ts,js}\" --fix",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/nextedutech/auth.git"
+  },
+  "keywords": [
+    "auth",
+    "localstorage",
+    "typescript"
+  ],
+  "author": "Gál Péter (pepyta)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/nextedutech/auth/issues"
+  },
+  "homepage": "https://bitbucket.org/nextedutech/auth#readme",
+  "dependencies": {
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "babel-jest": "^28.1.0",
+    "eslint": "^8.15.0",
+    "jest": "^28.1.0",
+    "typescript": "^4.6.4"
+  }
+}

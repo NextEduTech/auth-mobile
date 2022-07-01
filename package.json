@@ -25,6 +25,7 @@
   },
   "homepage": "https://bitbucket.org/nextedutech/auth#readme",
   "dependencies": {
+    "expo-secure-store": "^11.2.0",
     "typescript": "^4.5.4"
   },
   "devDependencies": {

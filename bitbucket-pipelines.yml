@@ -26,15 +26,6 @@ definitions:
           - node
         script:
           - npm run test
-    - step: &publish
-        name: Publish to npm
-        caches:
-          - node
-        script:
-          - npm run build
-          - pipe: atlassian/npm-publish:0.2.0
-            variables:
-              NPM_TOKEN: $NPM_TOKEN
 pipelines:
   branches:
     main:
@@ -52,7 +43,6 @@ pipelines:
       - parallel:
         - step: *lint
         - step: *build
-      - step: *publish
   pull-requests:
     '**':
       - step: *install

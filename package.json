@@ -1,7 +1,7 @@
 {
   "name": "@motivapp/auth",
   "version": "1.0.0",
-  "description": "An authentication library used on the web repos to allow code sharing between multiple repositories.",
+  "description": "An authentication library to be able to hot swap the one used in our @motivapp/api library.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

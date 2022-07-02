@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.TokenStorage = void 0;
 
 var SecureStore = _interopRequireWildcard(require("expo-secure-store"));
 
@@ -15,7 +15,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
  * This library is used to handle operations related to authentication in the Motivapp ecosystem.
  * The purpose of this library is to be able to swap the authentication logic in the mobile repository.
  */
-class Authentication {
+class TokenStorage {
   static SECURE_STORE_ACCESS_TOKEN_KEY = "access_token";
   static SECURE_STORE_REFRESH_TOKEN_KEY = "refresh_token";
   /**
@@ -24,7 +24,7 @@ class Authentication {
    */
 
   static async getAccessToken() {
-    return SecureStore.getItemAsync(Authentication.SECURE_STORE_ACCESS_TOKEN_KEY);
+    return SecureStore.getItemAsync(TokenStorage.SECURE_STORE_ACCESS_TOKEN_KEY);
   }
   /**
    * Gets the access token from the local storage.
@@ -33,7 +33,7 @@ class Authentication {
 
 
   static async getRefreshToken() {
-    return SecureStore.getItemAsync(Authentication.SECURE_STORE_REFRESH_TOKEN_KEY);
+    return SecureStore.getItemAsync(TokenStorage.SECURE_STORE_REFRESH_TOKEN_KEY);
   }
   /**
    * Saves the access token to the local storage.
@@ -41,7 +41,7 @@ class Authentication {
 
 
   static async setAccessToken(token) {
-    return SecureStore.setItemAsync(Authentication.SECURE_STORE_ACCESS_TOKEN_KEY, token);
+    return SecureStore.setItemAsync(TokenStorage.SECURE_STORE_ACCESS_TOKEN_KEY, token);
   }
   /**
    * Saves the refresh token to the local storage.
@@ -49,9 +49,17 @@ class Authentication {
 
 
   static async setRefreshToken(token) {
-    return SecureStore.setItemAsync(Authentication.SECURE_STORE_REFRESH_TOKEN_KEY, token);
+    return SecureStore.setItemAsync(TokenStorage.SECURE_STORE_REFRESH_TOKEN_KEY, token);
+  }
+  /**
+   * Clears the tokens from the local storage.
+   */
+
+
+  static async clear() {
+    await Promise.all([SecureStore.deleteItemAsync(TokenStorage.SECURE_STORE_ACCESS_TOKEN_KEY), SecureStore.deleteItemAsync(TokenStorage.SECURE_STORE_REFRESH_TOKEN_KEY)]);
   }
 
 }
 
-exports.default = Authentication;
+exports.TokenStorage = TokenStorage;

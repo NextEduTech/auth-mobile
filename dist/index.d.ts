@@ -2,7 +2,7 @@
  * This library is used to handle operations related to authentication in the Motivapp ecosystem.
  * The purpose of this library is to be able to swap the authentication logic in the mobile repository.
  */
-export default class Authentication {
+export declare class TokenStorage {
     private static SECURE_STORE_ACCESS_TOKEN_KEY;
     private static SECURE_STORE_REFRESH_TOKEN_KEY;
     /**
@@ -23,5 +23,9 @@ export default class Authentication {
      * Saves the refresh token to the local storage.
      */
     static setRefreshToken(token: string): Promise<void>;
+    /**
+     * Clears the tokens from the local storage.
+     */
+    static clear(): Promise<void>;
 }
 //# sourceMappingURL=index.d.ts.map

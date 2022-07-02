@@ -1,6 +1,6 @@
 {
   "name": "@motivapp/auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An authentication library to be able to hot swap the one used in our @motivapp/api library.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
